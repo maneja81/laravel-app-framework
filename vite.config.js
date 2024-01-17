@@ -4,7 +4,7 @@ import { resolve } from "path";
 import laravel from "laravel-vite-plugin";
 import { defineConfig } from "vite";
 
-const host = "nhr2024.site";
+const host = "laravel-base.site";
 
 export default defineConfig({
     plugins: [

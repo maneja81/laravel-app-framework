@@ -1,5 +1,6 @@
 <?php
 
+use App\Services\FirebaseService;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
 
@@ -16,4 +17,8 @@ use Illuminate\Support\Facades\Artisan;
 
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
+})->purpose('Display an inspiring quote');
+
+Artisan::command('test', function () {
+    (new FirebaseService)->dbWrite('test', ['test' => 'test']);
 })->purpose('Display an inspiring quote');
