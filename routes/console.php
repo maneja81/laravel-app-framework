@@ -20,5 +20,5 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote');
 
 Artisan::command('test', function () {
-    (new FirebaseService)->dbWrite('test', ['test' => 'test']);
+    (new FirebaseService)->dbWrite('test', ['test' => date('Y-m-d H:i:s')]);
 })->purpose('Display an inspiring quote');

@@ -1,20 +1,23 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getDatabase, ref, onValue } from "firebase/database";
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyCu8CsPcHpzTweaVEKOxr9bIHKrw-Jl-Us",
-  authDomain: "bikeformers-dev.firebaseapp.com",
-  projectId: "bikeformers-dev",
-  storageBucket: "bikeformers-dev.appspot.com",
-  messagingSenderId: "211237151714",
-  appId: "1:211237151714:web:54a2d7d4ac90565f148fbb",
-  measurementId: "G-F3HGQEY57R"
+    apiKey: "AIzaSyCEg1CTlYi7p0aelJQkSHl5tYOYxiqS7dM",
+    authDomain: "ma-shopify-apps.firebaseapp.com",
+    databaseURL: "https://ma-shopify-apps-default-rtdb.firebaseio.com",
+    projectId: "ma-shopify-apps",
+    storageBucket: "ma-shopify-apps.appspot.com",
+    messagingSenderId: "229141588998",
+    appId: "1:229141588998:web:c9c646ce1067d5c964e787",
+    measurementId: "G-0H5VZ3S4EG",
 };
-
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+export default {
+    dbWatch: function (path, callback) {
+        const starCountRef = ref(database, path);
+        onValue(starCountRef, (snapshot) => {
+            callback(snapshot.val());
+        });
+    },
+};
