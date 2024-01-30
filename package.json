@@ -14,7 +14,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
-        "alpinejs": "^3.13.3",
-        "firebase": "^10.6.0"
+        "firebase": "^10.6.0",
+        "preline": "^2.0.3"
     }
 }

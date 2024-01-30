@@ -1,5 +1,10 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, onValue } from "firebase/database";
+import { getAuth } from "firebase/auth";
+
+/* import { getAuth } from "firebase/auth";
+const auth = getAuth();
+auth.useDeviceLanguage(); */
 
 const firebaseConfig = {
     apiKey: "AIzaSyCEg1CTlYi7p0aelJQkSHl5tYOYxiqS7dM",

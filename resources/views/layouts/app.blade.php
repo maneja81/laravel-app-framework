@@ -11,7 +11,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Quicksand:wght@700&display=swap" rel="stylesheet">
-    @livewireStyles
     @vite('resources/css/app.css')
     @stack('header')
 </head>
@@ -20,7 +19,6 @@
     <div id="wrapper">
         @yield('content')
     </div>
-    @livewireScripts
     @vite('resources/js/app.js')
 </body>
 

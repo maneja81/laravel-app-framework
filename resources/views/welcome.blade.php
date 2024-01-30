@@ -7,7 +7,13 @@
     <div class="p-8">
         <div>Firebase Test</div>
         <div>
-            @livewire('firebase-test')
+            {{-- @livewire('firebase-test') --}}
+        </div>
+    </div>
+    <div class="p-8">
+        <div>Alpine & Livewire Binding</div>
+        <div>
+            @livewire('alpine-test')
         </div>
     </div>
 @endsection

@@ -1,7 +1,4 @@
-/* Alpine */
-import Alpine from 'alpinejs'
-window.Alpine = Alpine
-Alpine.start()
-
+/* Preline */
+import "preline";
 import fb from "./inc/firebase";
 window.$fb = fb;
