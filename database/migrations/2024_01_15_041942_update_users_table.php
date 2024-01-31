@@ -15,6 +15,8 @@ return new class extends Migration
             $table->dropColumn('name');
             $table->string('first_name')->after('id');
             $table->string('last_name')->after('first_name');
+            $table->string('phone')->after('email')->nullable();
+            $table->timestamp('phone_verified_at')->after('phone')->nullable();
             $table->json('meta')->nullable()->after('remember_token');
         });
     }

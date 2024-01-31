@@ -20,5 +20,6 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote');
 
 Artisan::command('test', function () {
-    (new FirebaseService)->dbWrite('test', ['test' => date('Y-m-d H:i:s')]);
+    // (new FirebaseService)->dbWrite('test', ['test' => date('Y-m-d H:i:s')]);
+    helpers()->sendEmail('admin@cssjockey.com', 'This is a test email', 'emails.test', ['test' => date('Y-m-d H:i:s')]);
 })->purpose('Display an inspiring quote');

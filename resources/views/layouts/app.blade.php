@@ -15,7 +15,7 @@
     @stack('header')
 </head>
 
-<body class="min-h-100vh leading-normal is-scrollbar-hidden @yield('body-classes')">
+<body class="min-h-100vh leading-normal is-scrollbar-hidden dark:bg-slate-900 dark:text-white @yield('body-classes')">
     <div id="wrapper">
         @yield('content')
     </div>

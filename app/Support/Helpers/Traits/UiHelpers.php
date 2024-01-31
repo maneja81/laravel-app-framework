@@ -47,5 +47,4 @@ trait UiHelpers
         $svg_content = Str::replace('<svg', '<svg class="' . $icon_class_name . '"', $svg_content);
         return $svg_content;
     }
-
 }

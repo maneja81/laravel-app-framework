@@ -3,6 +3,7 @@ namespace App\Support\Helpers;
 
 use App\Support\Helpers\Traits\ArrayHelpers;
 use App\Support\Helpers\Traits\DateHelpers;
+use App\Support\Helpers\Traits\EmailHelpers;
 use App\Support\Helpers\Traits\FileHelpers;
 use App\Support\Helpers\Traits\StringHelpers;
 use App\Support\Helpers\Traits\UiHelpers;
@@ -16,6 +17,7 @@ class AppHelpers{
     use DateHelpers;
     use UiHelpers;
     use FileHelpers;
+    use EmailHelpers;
 
     protected Filesystem $filesystem;
 

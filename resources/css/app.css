@@ -1,3 +1,38 @@
 @tailwind base;
 @tailwind components;
+@layer components {
+    .input {
+        @apply block w-full px-4 py-3 transition border focus:outline-none focus:ring-0 border-slate-300 focus:border-slate-400 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-800 dark:border-slate-600 dark:text-white;
+    }
+    .input-prefix {
+        @apply px-4 py-3 border border-r-0 border-slate-300 bg-slate-100;
+    }
+    .input-suffix {
+        @apply px-4 py-3 border border-l-0 border-slate-300 bg-slate-100;
+    }
+    .button {
+        @apply inline-flex items-center px-4 py-3 font-semibold border border-transparent gap-x-2 disabled:opacity-50 disabled:pointer-events-none;
+    }
+    button.is-black {
+        @apply text-white bg-gray-800 hover:bg-gray-900 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 dark:bg-white dark:text-gray-800;
+    }
+    button.is-secondary {
+        @apply text-white bg-gray-500 hover:bg-gray-600 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600;
+    }
+    button.is-success {
+        @apply text-white bg-teal-500 hover:bg-teal-600 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600;
+    }
+    button.is-primary {
+        @apply text-white bg-blue-600 hover:bg-blue-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600;
+    }
+    button.is-danger {
+        @apply text-white bg-red-500 hover:bg-red-600 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600;
+    }
+    button.is-warning {
+        @apply text-white bg-yellow-500 hover:bg-yellow-600 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600;
+    }
+    button.is-white {
+        @apply text-gray-800 bg-white hover:bg-gray-200 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600;
+    }
+}
 @tailwind utilities;
