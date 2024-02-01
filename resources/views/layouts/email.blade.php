@@ -60,6 +60,7 @@
                         <div class="sm-my-8" style="margin-bottom: 24px; margin-top: 48px; width: 100%; text-align: center">
                             <a href="{{ config('app.url') }}" style="font-size: 24px; font-weight: 700; color: #000; text-decoration-line: none" target="_blank">
                                 {{ config('app.name') }}
+                                {{-- <x-svg src="feather/activity" class="w-20" /> --}}
                             </a>
                         </div>
                         <table style="width: 100%;" cellpadding="0" cellspacing="0" role="none">
