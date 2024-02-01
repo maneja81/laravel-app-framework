@@ -13,8 +13,11 @@ class SendTransactionEmail implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     public $to;
+
     public $subject;
+
     public $view;
+
     public $data;
 
     public function __construct($to, $subject, $view, $data)

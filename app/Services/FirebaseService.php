@@ -7,7 +7,6 @@ use Kreait\Firebase\Factory;
 
 class FirebaseService
 {
-
     protected function firebaseFactory()
     {
         return (new Factory)

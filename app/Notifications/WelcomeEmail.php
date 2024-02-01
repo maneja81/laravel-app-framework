@@ -3,10 +3,9 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Support\Facades\URL;
-use Illuminate\Notifications\Notification;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\URL;
 
 class WelcomeEmail extends Notification
 {
@@ -37,6 +36,7 @@ class WelcomeEmail extends Notification
     {
         $app_name = config('app.name');
         $verification_link = URL::signedRoute('auth.verify', ['user' => $notifiable->id, 'redirect' => route('web.index')], now()->addDays(1));
+
         return (new MailMessage)
             ->subject("Welcome to {$app_name}! Verify Your Email & Unlock Your Exclusive Welcome Gift!")
             ->view('emails.auth.welcome-email', [

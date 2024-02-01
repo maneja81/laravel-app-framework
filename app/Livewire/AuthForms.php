@@ -2,7 +2,6 @@
 
 namespace App\Livewire;
 
-use App\Jobs\SendTransactionEmail;
 use App\Models\User;
 use Livewire\Component;
 
@@ -14,6 +13,7 @@ class AuthForms extends Component
         3. if user does not exist, show first name, last name, phone number, password fields and send verification email to register
     */
     public $form_type;
+
     public $form = [
         'email' => '',
         'password' => '',
@@ -52,7 +52,7 @@ class AuthForms extends Component
 
     public function updated($name, $value)
     {
-        helpers()->log($name . ' - ' . $value);
+        helpers()->log($name.' - '.$value);
         $this->validateOnly($name, $this->rules(), $this->messages());
     }
 
@@ -92,40 +92,40 @@ class AuthForms extends Component
     {
         $messages = [
             'default' => [
-                'form.email.required' => "Please enter your email address.",
-                'form.email.email' => "Please enter your email address.",
-                'form.email.exists' => "No account found with this email address.",
+                'form.email.required' => 'Please enter your email address.',
+                'form.email.email' => 'Please enter your email address.',
+                'form.email.exists' => 'No account found with this email address.',
             ],
             'register' => [
-                'form.first_name.required' => "Please enter your first name.",
-                'form.first_name.alpha' => "The first name can only contain alphabets.",
-                'form.last_name.required' => "Please enter your last name.",
-                'form.last_name.alpha' => "The last name can only contain alphabets.",
-                'form.email.required' => "Please enter your email address.",
-                'form.email.email' => "Please enter a valid email address.",
-                'form.email.unique' => "An account with this email already exists.",
-                'form.password.required' => "Please enter a strong password.",
-                'form.password.min' => "The password must be at least 10 characters.",
-                'form.password.regex' => "The password must contain a lowercase, an uppercase and a special character.",
+                'form.first_name.required' => 'Please enter your first name.',
+                'form.first_name.alpha' => 'The first name can only contain alphabets.',
+                'form.last_name.required' => 'Please enter your last name.',
+                'form.last_name.alpha' => 'The last name can only contain alphabets.',
+                'form.email.required' => 'Please enter your email address.',
+                'form.email.email' => 'Please enter a valid email address.',
+                'form.email.unique' => 'An account with this email already exists.',
+                'form.password.required' => 'Please enter a strong password.',
+                'form.password.min' => 'The password must be at least 10 characters.',
+                'form.password.regex' => 'The password must contain a lowercase, an uppercase and a special character.',
             ],
             'forgot-password' => [
-                'form.email.required' => "Please enter your email address.",
-                'form.email.email' => "Please enter your email address.",
-                'form.email.exists' => "No account found with this email address.",
+                'form.email.required' => 'Please enter your email address.',
+                'form.email.email' => 'Please enter your email address.',
+                'form.email.exists' => 'No account found with this email address.',
             ],
             'reset-password' => [
-                'form.email.required' => "Please enter your email address.",
-                'form.email.email' => "Please enter your email address.",
-                'form.email.exists' => "No account found with this email address.",
-                'form.password.required' => "Please enter a strong password.",
-                'form.password.min' => "The password must be at least 10 characters.",
-                'form.password.regex' => "The password must contain a lowercase, an uppercase and a special character.",
-                'form.password.confirmed' => "The passwords does not match.",
+                'form.email.required' => 'Please enter your email address.',
+                'form.email.email' => 'Please enter your email address.',
+                'form.email.exists' => 'No account found with this email address.',
+                'form.password.required' => 'Please enter a strong password.',
+                'form.password.min' => 'The password must be at least 10 characters.',
+                'form.password.regex' => 'The password must contain a lowercase, an uppercase and a special character.',
+                'form.password.confirmed' => 'The passwords does not match.',
             ],
             'magic-link' => [
-                'form.email.required' => "Please enter your email address.",
-                'form.email.email' => "Please enter your email address.",
-                'form.email.exists' => "No account found with this email address.",
+                'form.email.required' => 'Please enter your email address.',
+                'form.email.email' => 'Please enter your email address.',
+                'form.email.exists' => 'No account found with this email address.',
             ],
         ];
 
@@ -162,16 +162,19 @@ class AuthForms extends Component
             'email' => $this->form['email'],
             'password' => $this->form['password'],
         ]);
-        if (auth()->check() && !$user->email_verified_at) {
+        if (auth()->check() && ! $user->email_verified_at) {
             $user->sendEmailVerificationEmail();
             auth()->logout();
             session()->flash('error', 'You must verify your email address, please check your email for the verification link.');
+
             return;
-        } else if (!auth()->check()) {
+        } elseif (! auth()->check()) {
             session()->flash('error', 'Please confirm your email and password.');
+
             return;
         } else {
             auth()->login($user);
+
             return redirect()->route('web.index');
         }
     }
@@ -202,6 +205,7 @@ class AuthForms extends Component
         $user->password = bcrypt($this->form['password']);
         $user->save();
         auth()->login($user);
+
         return redirect()->route('web.index');
     }
 
@@ -218,6 +222,6 @@ class AuthForms extends Component
 
     public function render()
     {
-        return view('livewire.auth-forms.' . $this->form_type);
+        return view('livewire.auth-forms.'.$this->form_type);
     }
 }

@@ -7,13 +7,12 @@ use Illuminate\Support\Str;
 
 trait ArrayHelpers
 {
-
     public function arrayFilterFields($array, $fields = [])
     {
         if (isset($array['data']) && is_array($array['data'])) {
             $array = $array['data'];
         }
-        if (!empty($fields)) {
+        if (! empty($fields)) {
             $return = array_intersect_key($array, array_flip((array) $fields));
             foreach ($fields as $field) {
                 if (Str::contains($field, '.')) {
@@ -38,7 +37,7 @@ trait ArrayHelpers
         foreach ($array as $key => $value) {
             if ($key != '') {
                 $return[] = [
-                    'key'   => $key,
+                    'key' => $key,
                     'value' => $value,
                 ];
             }
@@ -50,21 +49,21 @@ trait ArrayHelpers
     public function weekdaysArray($return_type = false)
     {
         $data = [
-            'monday'    => 'Monday',
-            'tuesday'   => 'Tuesday',
+            'monday' => 'Monday',
+            'tuesday' => 'Tuesday',
             'wednesday' => 'Wednesday',
-            'thursday'  => 'Thursday',
-            'friday'    => 'Friday',
-            'saturday'  => 'Saturday',
-            'sunday'    => 'Sunday',
+            'thursday' => 'Thursday',
+            'friday' => 'Friday',
+            'saturday' => 'Saturday',
+            'sunday' => 'Sunday',
         ];
-        if (!$return_type) {
+        if (! $return_type) {
             return $data;
         }
-        if ($return_type && 'keys' === $return_type) {
+        if ($return_type && $return_type === 'keys') {
             return array_keys($data);
         }
-        if ($return_type && 'values' === $return_type) {
+        if ($return_type && $return_type === 'values') {
             return array_values($data);
         }
     }

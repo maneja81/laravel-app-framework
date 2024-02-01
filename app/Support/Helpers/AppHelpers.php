@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Support\Helpers;
 
 use App\Support\Helpers\Traits\ArrayHelpers;
@@ -8,18 +9,18 @@ use App\Support\Helpers\Traits\FileHelpers;
 use App\Support\Helpers\Traits\FormHelpers;
 use App\Support\Helpers\Traits\StringHelpers;
 use App\Support\Helpers\Traits\UiHelpers;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Facades\Log;
 
-class AppHelpers{
-
+class AppHelpers
+{
     use ArrayHelpers;
-    use StringHelpers;
     use DateHelpers;
-    use UiHelpers;
-    use FileHelpers;
     use EmailHelpers;
+    use FileHelpers;
     use FormHelpers;
+    use StringHelpers;
+    use UiHelpers;
 
     protected Filesystem $filesystem;
 
@@ -27,7 +28,7 @@ class AppHelpers{
 
     public static function getInstance(): AppHelpers
     {
-        if (!isset(self::$instance)) {
+        if (! isset(self::$instance)) {
             self::$instance = new self();
         }
 
@@ -41,10 +42,9 @@ class AppHelpers{
 
     public function log($message)
     {
-        if (!is_string($message)) {
+        if (! is_string($message)) {
             $message = json_encode($message);
         }
         Log::info($message);
     }
-
 }

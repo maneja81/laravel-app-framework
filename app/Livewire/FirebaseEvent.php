@@ -2,12 +2,13 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
 use Livewire\Attributes\On;
+use Livewire\Component;
 
 class FirebaseEvent extends Component
 {
     public $path;
+
     public $event;
 
     #[On('firebase-response')]

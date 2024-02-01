@@ -17,6 +17,7 @@ class AuthController extends Controller
     {
         Auth::logout();
         session()->invalidate();
+
         return redirect($request->redirect ?? route('web.index'));
     }
 
@@ -25,6 +26,7 @@ class AuthController extends Controller
         $user = (new User())->findOrFail($request->user);
         $user->markEmailAsVerified();
         Auth::login($user);
+
         return redirect($request->redirect ?? route('web.index'));
     }
 }

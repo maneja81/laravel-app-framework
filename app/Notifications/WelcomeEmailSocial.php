@@ -3,10 +3,8 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Support\Facades\URL;
-use Illuminate\Notifications\Notification;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
 
 class WelcomeEmailSocial extends Notification
 {
@@ -36,11 +34,12 @@ class WelcomeEmailSocial extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         $app_name = config('app.name');
+
         return (new MailMessage)
             ->subject("Welcome to {$app_name}! Unlock Your Exclusive Welcome Gift!")
             ->view('emails.auth.welcome-email-social', [
                 'app_name' => env('APP_NAME', 'Laravel'),
-                'user' => $notifiable
+                'user' => $notifiable,
             ]);
     }
 

@@ -3,10 +3,9 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Support\Facades\URL;
-use Illuminate\Notifications\Notification;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\URL;
 
 class VerifyEmailAddress extends Notification
 {
@@ -37,6 +36,7 @@ class VerifyEmailAddress extends Notification
     {
         $app_name = config('app.name');
         $verification_link = URL::signedRoute('auth.verify', ['user' => $notifiable->id, 'redirect' => route('web.index')], now()->addDays(1));
+
         return (new MailMessage)
             ->subject("Verify Your Email Now To Confirm Your {$app_name} Membership!")
             ->view('emails.auth.verify-email', [

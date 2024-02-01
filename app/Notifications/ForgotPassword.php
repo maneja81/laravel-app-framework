@@ -3,10 +3,9 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Support\Facades\URL;
-use Illuminate\Notifications\Notification;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\URL;
 
 class ForgotPassword extends Notification
 {
@@ -37,6 +36,7 @@ class ForgotPassword extends Notification
     {
         $app_name = config('app.name');
         $verification_link = URL::signedRoute('auth.login', ['user' => $notifiable->id, 'view' => 'reset-password'], now()->addMinutes(10));
+
         return (new MailMessage)
             ->subject("Reset Your {$app_name} Password - Your Key to Seamless Riding!")
             ->view('emails.auth.forgot-password', [

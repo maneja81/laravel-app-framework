@@ -12,11 +12,11 @@ trait StringHelpers
         $str1 = base_convert(mt_rand(0, pow(36, 4) - 1), 10, 36);
         $str2 = base_convert(mt_rand(0, pow(36, 3) - 1), 10, 36);
         $str3 = substr(sha1(md5(strtotime(date('Y-m-d H:i:s')))), 7, 3);
-        $unique_string = sprintf("%04s%03s%s", $str1, $str2, $str3);
+        $unique_string = sprintf('%04s%03s%s', $str1, $str2, $str3);
         $unique_string = ($case == 'upper') ? strtoupper($unique_string) : $unique_string;
         $unique_string = ($case == 'lower') ? strtolower($unique_string) : $unique_string;
 
-        return $prefix . $unique_string;
+        return $prefix.$unique_string;
     }
 
     public function strTimeInAgo($datetime, $full = false): string
@@ -39,17 +39,17 @@ trait StringHelpers
         ];
         foreach ($string as $k => &$v) {
             if ($diff->$k) {
-                $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
+                $v = $diff->$k.' '.$v.($diff->$k > 1 ? 's' : '');
             } else {
                 unset($string[$k]);
             }
         }
 
-        if (!$full) {
+        if (! $full) {
             $string = array_slice($string, 0, 1);
         }
 
-        return $string ? implode(', ', $string) . ' ago' : 'just now';
+        return $string ? implode(', ', $string).' ago' : 'just now';
     }
 
     public function strSecure($string, $action = 'e'): string
@@ -58,13 +58,13 @@ trait StringHelpers
         $secret_iv = sha1(md5(env('APP_URL')));
 
         $output = false;
-        $encrypt_method = "AES-256-CBC";
+        $encrypt_method = 'AES-256-CBC';
         $key = hash('sha256', $secret_key);
         $iv = substr(hash('sha256', $secret_iv), 0, 16);
 
         if ($action == 'e') {
             $output = base64_encode(openssl_encrypt($string, $encrypt_method, $key, 0, $iv));
-        } else if ($action == 'd') {
+        } elseif ($action == 'd') {
             $output = openssl_decrypt(base64_decode($string), $encrypt_method, $key, 0, $iv);
         }
 
@@ -74,11 +74,11 @@ trait StringHelpers
     public function strQueryString(string $url, array $query_params = []): string
     {
         $operator = '';
-        if (!empty($query_params)) {
+        if (! empty($query_params)) {
             $operator = Str::contains($url, '?') ? '&' : '?';
         }
 
-        $url .= $operator . http_build_query($query_params);
+        $url .= $operator.http_build_query($query_params);
 
         return $url;
     }

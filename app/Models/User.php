@@ -4,27 +4,26 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-use Laravel\Sanctum\HasApiTokens;
-use Spatie\Permission\Models\Role;
-use App\Notifications\WelcomeEmail;
-use App\Support\Traits\ModelHelpers;
 use App\Notifications\ForgotPassword;
 use App\Notifications\MagicLoginLink;
-use Spatie\Permission\Traits\HasRoles;
-use Illuminate\Notifications\Notifiable;
 use App\Notifications\VerifyEmailAddress;
+use App\Notifications\WelcomeEmail;
 use App\Notifications\WelcomeEmailSocial;
+use App\Support\Traits\ModelHelpers;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
     use HasApiTokens;
     use HasFactory;
-    use Notifiable;
-    use ModelHelpers;
     use HasRoles;
-
+    use ModelHelpers;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -66,6 +65,7 @@ class User extends Authenticatable
     {
         $data['password'] = bcrypt($data['password']);
         $user = parent::create($data);
+
         return $user;
     }
 
@@ -73,41 +73,47 @@ class User extends Authenticatable
     {
         $roles = Role::whereIn('name', $role_names)->get()->pluck('id')->toArray();
         $this->roles()->sync($roles);
+
         return $this;
     }
 
     public function sendEmailVerificationEmail()
     {
         $this->notify(new VerifyEmailAddress($this));
+
         return $this;
     }
 
     public function sendPasswordResetEmail()
     {
         $this->notify(new ForgotPassword($this));
+
         return $this;
     }
 
     public function sendWelcomeEmail()
     {
         $this->notify(new WelcomeEmail($this));
+
         return $this;
     }
 
     public function sendWelcomeEmailSocial()
     {
         $this->notify(new WelcomeEmailSocial($this));
+
         return $this;
     }
 
     public function sendMagicLoginLink()
     {
         $this->notify(new MagicLoginLink($this));
+
         return $this;
     }
 
     public function getDisplayNameAttribute()
     {
-        return $this->first_name . ' ' . $this->last_name;
+        return $this->first_name.' '.$this->last_name;
     }
 }

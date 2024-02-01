@@ -6,9 +6,8 @@ use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
-use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Envelope;
-use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\SerializesModels;
 
 class AccountCreated extends Mailable
 {
@@ -30,7 +29,7 @@ class AccountCreated extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Welcome to ' . config('app.name') . '! Verify Your Email & Unlock Your Exclusive Welcome Gift!',
+            subject: 'Welcome to '.config('app.name').'! Verify Your Email & Unlock Your Exclusive Welcome Gift!',
         );
     }
 

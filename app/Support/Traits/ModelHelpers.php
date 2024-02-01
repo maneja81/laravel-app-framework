@@ -9,12 +9,14 @@ trait ModelHelpers
     public function getColumns()
     {
         $table_name = $this->getTable();
+
         return Schema::getColumnListing($table_name);
     }
 
     public function hasColumn($name)
     {
         $columns = $this->getColumns();
+
         return in_array($name, $columns);
     }
 
@@ -22,16 +24,17 @@ trait ModelHelpers
     {
         $columns = $this->getColumns();
         $hidden_fields = [];
-        if (!is_null($this->getHidden())) {
+        if (! is_null($this->getHidden())) {
             $hidden_fields = $this->getHidden();
         }
         $ignore_columns = array_merge(['id', 'meta', 'created_at', 'updated_at', 'deleted_at'], $ignore, $hidden_fields);
         $return = [];
         foreach ($columns as $column) {
-            if (!in_array($column, $ignore_columns)) {
+            if (! in_array($column, $ignore_columns)) {
                 $return[] = $column;
             }
         }
+
         return $return;
     }
 
@@ -43,6 +46,7 @@ trait ModelHelpers
         $created = parent::create($data);
         $created->updateInfo($meta_data);
         $created->updateInfo($data);
+
         return $created;
     }
 
@@ -62,7 +66,7 @@ trait ModelHelpers
             ];
         }
         $result = $this->where($where)->first();
-        if (!$result) {
+        if (! $result) {
             return [];
         }
 
@@ -75,12 +79,12 @@ trait ModelHelpers
 
     public function getMeta($key = null, $default = '')
     {
-        if (!$this->hasColumn('meta')) {
+        if (! $this->hasColumn('meta')) {
             throw new \Exception('Meta column does not exist on this model.', 500);
         }
         $return = [];
         $meta_data = $this->meta;
-        if (!is_null($meta_data)) {
+        if (! is_null($meta_data)) {
             $return = $meta_data;
         }
 
@@ -89,24 +93,26 @@ trait ModelHelpers
 
     public function updateMeta($key, $value)
     {
-        if (!$this->hasColumn('meta')) {
+        if (! $this->hasColumn('meta')) {
             throw new \Exception('Meta column does not exist on this model.', 500);
         }
         $meta_data = $this->meta;
         $meta_data[$key] = $value;
         $this->update(['meta' => $meta_data]);
+
         return $this->refresh();
     }
 
     public function deleteMeta($key)
     {
-        if (!$this->hasColumn('meta')) {
+        if (! $this->hasColumn('meta')) {
             throw new \Exception('Meta column does not exist on this model.', 500);
         }
         $meta_data = $this->meta;
         unset($meta_data[$key]);
         $this->meta = $meta_data;
         $this->save();
+
         return $this->refresh();
     }
 
@@ -120,7 +126,7 @@ trait ModelHelpers
             if (in_array($key, $fillable_fields)) {
                 $fillable_data[$key] = $value;
             } else {
-                if (!in_array($key, $hidden_fields)) {
+                if (! in_array($key, $hidden_fields)) {
                     $meta_data[$key] = $value;
                 }
             }

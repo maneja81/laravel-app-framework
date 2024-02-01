@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 
 class SocialAuthController extends Controller
@@ -27,6 +26,7 @@ class SocialAuthController extends Controller
                 'token_secret' => $provider_user->tokenSecret,
             ]);
             auth()->login($user);
+
             return redirect()->route('web.index');
         }
         // create user
@@ -47,6 +47,7 @@ class SocialAuthController extends Controller
         $user->markEmailAsVerified();
         $user->syncRoles(['user'])->sendWelcomeEmailSocial();
         auth()->login($user);
+
         return redirect()->route('web.index');
     }
 }

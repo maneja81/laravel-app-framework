@@ -1,6 +1,6 @@
 <?php
 
-return  [
+return [
     [
         'first_name' => 'Super',
         'last_name' => 'Admin',

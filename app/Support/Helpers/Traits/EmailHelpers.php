@@ -3,8 +3,8 @@
 namespace App\Support\Helpers\Traits;
 
 use App\Mail\TransactionalEmail;
-use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\URL;
 
 trait EmailHelpers
 {
@@ -14,8 +14,8 @@ trait EmailHelpers
         Mail::to($to)->send($email);
     }
 
-    public function magicLoginLink(string $email){
+    public function magicLoginLink(string $email)
+    {
         return URL::signedRoute('auth.login.with-magic-link', ['email' => $email], now()->addMinutes(5));
     }
-
 }
