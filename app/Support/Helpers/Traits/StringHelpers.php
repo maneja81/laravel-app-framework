@@ -2,6 +2,7 @@
 
 namespace App\Support\Helpers\Traits;
 
+use DateTime;
 use Illuminate\Support\Str;
 
 trait StringHelpers

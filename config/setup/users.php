@@ -28,13 +28,4 @@ return  [
         'password' => env('SUPER_ADMIN_PASSWORD', '#StrongPassword1029$'),
         'role' => 'staff',
     ],
-    [
-        'first_name' => 'Subscriber',
-        'last_name' => 'Account',
-        'mobile' => '+919876543210',
-        'mobile_verified' => true,
-        'email' => 'subscriber@example.com',
-        'password' => env('SUPER_ADMIN_PASSWORD', '#StrongPassword1029$'),
-        'role' => 'subscriber',
-    ]
 ];

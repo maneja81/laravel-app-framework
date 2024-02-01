@@ -3,6 +3,7 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 export default {
     darkMode: "class",
     content: [
+        "./app/**/*.php",
         "./resources/**/*.blade.php",
         "./resources/**/*.js",
         "node_modules/preline/dist/*.js",

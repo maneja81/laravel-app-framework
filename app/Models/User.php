@@ -5,9 +5,15 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Models\Role;
+use App\Notifications\WelcomeEmail;
 use App\Support\Traits\ModelHelpers;
+use App\Notifications\ForgotPassword;
+use App\Notifications\MagicLoginLink;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
+use App\Notifications\VerifyEmailAddress;
+use App\Notifications\WelcomeEmailSocial;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -29,6 +35,8 @@ class User extends Authenticatable
         'first_name',
         'last_name',
         'email',
+        'phone',
+        'phone_verified_at',
         'password',
         'meta',
     ];
@@ -53,6 +61,50 @@ class User extends Authenticatable
         'password' => 'hashed',
         'meta' => 'array',
     ];
+
+    public function create($data)
+    {
+        $data['password'] = bcrypt($data['password']);
+        $user = parent::create($data);
+        return $user;
+    }
+
+    public function syncRoles(array $role_names)
+    {
+        $roles = Role::whereIn('name', $role_names)->get()->pluck('id')->toArray();
+        $this->roles()->sync($roles);
+        return $this;
+    }
+
+    public function sendEmailVerificationEmail()
+    {
+        $this->notify(new VerifyEmailAddress($this));
+        return $this;
+    }
+
+    public function sendPasswordResetEmail()
+    {
+        $this->notify(new ForgotPassword($this));
+        return $this;
+    }
+
+    public function sendWelcomeEmail()
+    {
+        $this->notify(new WelcomeEmail($this));
+        return $this;
+    }
+
+    public function sendWelcomeEmailSocial()
+    {
+        $this->notify(new WelcomeEmailSocial($this));
+        return $this;
+    }
+
+    public function sendMagicLoginLink()
+    {
+        $this->notify(new MagicLoginLink($this));
+        return $this;
+    }
 
     public function getDisplayNameAttribute()
     {

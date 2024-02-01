@@ -1,11 +1,11 @@
 <?php
 
 return  [
-    'default' => 'subscriber',
+    'default' => 'customer',
     "all" => [
         'super-admin',
         'admin',
         'staff',
-        'subscriber',
+        'customer',
     ]
 ];

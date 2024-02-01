@@ -28,6 +28,37 @@
             line-height: 1
         }
 
+        h1 {
+            font-size: 36px;
+            margin-bottom: 16px;
+            font-weight: bold;
+        }
+        h2 {
+            font-size: 24px;
+            margin-bottom: 16px;
+            font-weight: bold;
+        }
+        h3 {
+            font-size: 20px;
+            margin-bottom: 16px;
+            font-weight: bold;
+        }
+        h4 {
+            font-size: 16px;
+            margin-bottom: 16px;
+            font-weight: bold;
+        }
+        h5 {
+            font-size: 14px;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        h6 {
+            font-size: 12px;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
         @media (max-width: 600px) {
             .sm-my-8 {
                 margin-top: 32px !important;

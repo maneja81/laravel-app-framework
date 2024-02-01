@@ -1,0 +1,37 @@
+{
+    "id": "100697935793078731589",
+    "nickname": null,
+    "name": "Mohit Aneja",
+    "email": "admin@cssjockey.com",
+    "avatar": "https://lh3.googleusercontent.com/a/ACg8ocICjE_tPYmTScyZSEPssQbP_WZTxrXyOa-zUXMTYdlfJerd=s96-c",
+    "user": {
+        "sub": "100697935793078731589",
+        "name": "Mohit Aneja",
+        "given_name": "Mohit",
+        "family_name": "Aneja",
+        "picture": "https://lh3.googleusercontent.com/a/ACg8ocICjE_tPYmTScyZSEPssQbP_WZTxrXyOa-zUXMTYdlfJerd=s96-c",
+        "email": "admin@cssjockey.com",
+        "email_verified": true,
+        "locale": "en",
+        "hd": "cssjockey.com",
+        "id": "100697935793078731589",
+        "verified_email": true,
+        "link": null
+    },
+    "attributes": {
+        "id": "100697935793078731589",
+        "nickname": null,
+        "name": "Mohit Aneja",
+        "email": "admin@cssjockey.com",
+        "avatar": "https://lh3.googleusercontent.com/a/ACg8ocICjE_tPYmTScyZSEPssQbP_WZTxrXyOa-zUXMTYdlfJerd=s96-c",
+        "avatar_original": "https://lh3.googleusercontent.com/a/ACg8ocICjE_tPYmTScyZSEPssQbP_WZTxrXyOa-zUXMTYdlfJerd=s96-c"
+    },
+    "token": "ya29.a0AfB_byAj5-pg8Ns4jJeGNGPhUAWAcIsvh80uUTXE9TnS-10oF_7VKfMOZ_SZcxHL_TnosEmJ1EQuNFswsJyCQYzfhAVnYq43kjwumh85b9ZaGGwypYASyEynH8NGE3vmiPvUYqvZYqexwLGCG-Pwfh0SmcyrdhZeKDQaCgYKAUgSARISFQHGX2MiPTDpKI0UxHIzft7CJOwYMw0170",
+    "refreshToken": null,
+    "expiresIn": 3599,
+    "approvedScopes": [
+        "openid",
+        "https://www.googleapis.com/auth/userinfo.profile",
+        "https://www.googleapis.com/auth/userinfo.email"
+    ]
+}

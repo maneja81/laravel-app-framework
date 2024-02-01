@@ -1,1 +1,1 @@
-@include('partials.auth-forms.' . $type)
+@include('partials.auth-forms.' . $form_type)
