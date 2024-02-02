@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 use App\Support\Traits\ModelHelpers;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ProductCollection extends Model
 {
+    use HasSlug;
     use HasFactory;
     use ModelHelpers;
 
@@ -24,9 +27,16 @@ class ProductCollection extends Model
         'meta' => 'array',
     ];
 
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('name')
+            ->saveSlugsTo('slug');
+    }
+
     public function products()
     {
-        return $this->hasMany(Product::class);
+        return $this->belongsToMany(Product::class);
     }
 
     public function scopePublished()

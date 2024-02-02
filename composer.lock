@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fc58b69aeac350eaa616159617b6899f",
+    "content-hash": "6c9ff91d8d4b8e15318f7a1569d43bcc",
     "packages": [
         {
             "name": "beste/clock",
@@ -1481,21 +1481,21 @@
         },
         {
             "name": "google/auth",
-            "version": "v1.34.0",
+            "version": "v1.35.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-auth-library-php.git",
-                "reference": "155daeadfd2f09743f611ea493b828d382519575"
+                "reference": "6e9c9fd4e2bbd7042f50083076346e4a1eff4e4b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-auth-library-php/zipball/155daeadfd2f09743f611ea493b828d382519575",
-                "reference": "155daeadfd2f09743f611ea493b828d382519575",
+                "url": "https://api.github.com/repos/googleapis/google-auth-library-php/zipball/6e9c9fd4e2bbd7042f50083076346e4a1eff4e4b",
+                "reference": "6e9c9fd4e2bbd7042f50083076346e4a1eff4e4b",
                 "shasum": ""
             },
             "require": {
                 "firebase/php-jwt": "^6.0",
-                "guzzlehttp/guzzle": "^6.2.1|^7.0",
+                "guzzlehttp/guzzle": "^6.5.8||^7.4.5",
                 "guzzlehttp/psr7": "^2.4.5",
                 "php": "^7.4||^8.0",
                 "psr/cache": "^1.0||^2.0||^3.0",
@@ -1533,9 +1533,9 @@
             "support": {
                 "docs": "https://googleapis.github.io/google-auth-library-php/main/",
                 "issues": "https://github.com/googleapis/google-auth-library-php/issues",
-                "source": "https://github.com/googleapis/google-auth-library-php/tree/v1.34.0"
+                "source": "https://github.com/googleapis/google-auth-library-php/tree/v1.35.0"
             },
-            "time": "2024-01-03T20:45:15+00:00"
+            "time": "2024-02-01T20:41:08+00:00"
         },
         {
             "name": "google/cloud-core",
@@ -6119,121 +6119,6 @@
                 }
             ],
             "time": "2022-10-12T17:22:51+00:00"
-        },
-        {
-            "name": "socialiteproviders/facebook",
-            "version": "4.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/SocialiteProviders/Facebook.git",
-                "reference": "9b94a9334b5d0f61de8f5a20928d63d4d8f4e00d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/SocialiteProviders/Facebook/zipball/9b94a9334b5d0f61de8f5a20928d63d4d8f4e00d",
-                "reference": "9b94a9334b5d0f61de8f5a20928d63d4d8f4e00d",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "php": "^7.2 || ^8.0",
-                "socialiteproviders/manager": "~4.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "SocialiteProviders\\Facebook\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Oleksandr Prypkhan (Alex Wells)",
-                    "email": "autaut03@googlemail.com"
-                }
-            ],
-            "description": "Facebook (facebook.com) OAuth2 Provider for Laravel Socialite",
-            "support": {
-                "source": "https://github.com/SocialiteProviders/Facebook/tree/4.1.0"
-            },
-            "time": "2020-12-01T23:10:59+00:00"
-        },
-        {
-            "name": "socialiteproviders/manager",
-            "version": "v4.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/SocialiteProviders/Manager.git",
-                "reference": "df5e45b53d918ec3d689f014d98a6c838b98ed96"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/SocialiteProviders/Manager/zipball/df5e45b53d918ec3d689f014d98a6c838b98ed96",
-                "reference": "df5e45b53d918ec3d689f014d98a6c838b98ed96",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "^6.0 || ^7.0 || ^8.0 || ^9.0 || ^10.0",
-                "laravel/socialite": "~5.0",
-                "php": "^8.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "^1.2",
-                "phpunit/phpunit": "^6.0 || ^9.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "SocialiteProviders\\Manager\\ServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "SocialiteProviders\\Manager\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Andy Wendt",
-                    "email": "andy@awendt.com"
-                },
-                {
-                    "name": "Anton Komarev",
-                    "email": "a.komarev@cybercog.su"
-                },
-                {
-                    "name": "Miguel Piedrafita",
-                    "email": "soy@miguelpiedrafita.com"
-                },
-                {
-                    "name": "atymic",
-                    "email": "atymicq@gmail.com",
-                    "homepage": "https://atymic.dev"
-                }
-            ],
-            "description": "Easily add new or override built-in providers in Laravel Socialite.",
-            "homepage": "https://socialiteproviders.com",
-            "keywords": [
-                "laravel",
-                "manager",
-                "oauth",
-                "providers",
-                "socialite"
-            ],
-            "support": {
-                "issues": "https://github.com/socialiteproviders/manager/issues",
-                "source": "https://github.com/socialiteproviders/manager"
-            },
-            "time": "2023-08-27T23:46:34+00:00"
         },
         {
             "name": "spatie/fractalistic",

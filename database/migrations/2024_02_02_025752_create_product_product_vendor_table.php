@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('product_vendors', function (Blueprint $table) {
+        Schema::create('product_product_vendor', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->string('email')->unique()->nullable();
-            $table->string('phone')->unique()->nullable();
-            $table->string('website')->unique()->nullable();
-            $table->text('address')->nullable();
+            $table->foreignId('product_id')->constrained();
+            $table->foreignId('product_vendor_id')->constrained();
+            $table->unique(['product_id', 'product_vendor_id'])->name('product_vendor_unique');
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('product_vendors');
+        Schema::dropIfExists('product_product_vendor');
     }
 };

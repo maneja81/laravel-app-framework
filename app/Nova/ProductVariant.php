@@ -2,30 +2,28 @@
 
 namespace App\Nova;
 
-use App\Nova\ProductBrand;
 use Laravel\Nova\Fields\ID;
-use App\Nova\ProductVariant;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Tag;
 use Laravel\Nova\Fields\Text;
-use App\Nova\ProductCollection;
+use Laravel\Nova\Fields\Image;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
-use Laravel\Nova\Fields\HasMany;
-use Laravel\Nova\Fields\Markdown;
-use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\BelongsToMany;
+use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\Currency;
+use Laravel\Nova\Fields\KeyValue;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Product extends Resource
+class ProductVariant extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\Product>
+     * @var class-string<\App\Models\ProductVariant>
      */
-    public static $model = \App\Models\Product::class;
+    public static $model = \App\Models\ProductVariant::class;
 
-    public static $with = ['variants'];
+    public static $with = ['product'];
+
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -43,7 +41,9 @@ class Product extends Resource
         'id',
         'name',
         'slug',
-        'content',
+        'sku',
+        'cost',
+        'barcode',
     ];
 
     /**
@@ -54,11 +54,18 @@ class Product extends Resource
      */
     public function fields(NovaRequest $request)
     {
+        $sku = 'BFSKU-' . strtoupper(substr(uniqid(), 0, 8));
+        helpers()->log($this);
         return [
             ID::make()->sortable(),
-            Text::make('Name')->placeholder('Specify product title')->sortable()->default('Test Product'),
-            Markdown::make('Short Description', 'excerpt')->hideFromIndex()->default('Short description'),
-            Markdown::make('Long Description', 'content')->hideFromIndex()->default('Long description'),
+            Text::make('SKU')->rules('required', 'unique:product_variants,sku,' . $this->id)->default($sku)->readonly()->sortable(),
+            Text::make('Name')->rules('required', 'unique:product_variants,sku,' . $this->id)->help('e.g. BLACK-XL')->sortable(),
+            Image::make('Image')->disk('public')->rules('required')->path('products'),
+            Number::make('Stock')->rules('required', 'min:0')->sortable(),
+            Currency::make('Cost')->rules('required', 'min:0')->currency('INR')->sortable(),
+            Currency::make('Price')->rules('required', 'min:0')->currency('INR')->sortable(),
+            Currency::make('Compare Price')->rules('required', 'min:0')->currency('INR')->sortable(),
+            Number::make('Weight')->rules('required', 'min:0')->placeholder('KGs')->help('Specify the weight in kilogram, this is used to calculate shipping cost.')->step(0.01)->sortable(),
             Select::make('Status')->options([
                 'draft' => 'Draft',
                 'published' => 'Published',
@@ -66,14 +73,8 @@ class Product extends Resource
             ])->displayUsing(function ($status) {
                 return ucfirst($status);
             })->default('draft'),
-            HasMany::make('Product Variants', 'variants', ProductVariant::class),
-            BelongsTo::make('Brand', 'brand', ProductBrand::class)->nullable(),
-            BelongsToMany::make('Collections', 'collections', ProductCollection::class)->showCreateRelationButton()->collapsedByDefault(),
-            BelongsToMany::make('Categories', 'categories', ProductCategory::class)->showCreateRelationButton()->collapsedByDefault(),
-            BelongsToMany::make('Tags', 'tags', ProductTag::class)->showCreateRelationButton()->collapsedByDefault(),
-            BelongsToMany::make('Vendors', 'vendors', ProductVendor::class)->showCreateRelationButton()->collapsedByDefault(),
-            Tag::make('Categories', 'categories', ProductCategory::class)->showCreateRelationButton(),
-            Tag::make('Tags', 'tags', ProductTag::class)->showCreateRelationButton(),
+            Boolean::make('Is Default', 'is_default')->sortable(),
+            KeyValue::make('Meta')->rules('json'),
         ];
     }
 

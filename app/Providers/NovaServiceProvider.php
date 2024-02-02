@@ -7,6 +7,11 @@ use App\Nova\Product;
 use Laravel\Nova\Nova;
 use Illuminate\Http\Request;
 use App\Nova\Dashboards\Main;
+use App\Nova\ProductCategory;
+use App\Nova\ProductCollection;
+use App\Nova\ProductTag;
+use App\Nova\ProductVariant;
+use App\Nova\ProductVendor;
 use Laravel\Nova\Menu\MenuItem;
 use Laravel\Nova\Menu\MenuGroup;
 use Laravel\Nova\Menu\MenuSection;
@@ -34,6 +39,11 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
                 MenuSection::make('Store', [
                     MenuItem::resource(Product::class),
+                    MenuItem::resource(ProductVariant::class),
+                    MenuItem::resource(ProductCategory::class),
+                    MenuItem::resource(ProductTag::class),
+                    MenuItem::resource(ProductVendor::class),
+                    MenuItem::resource(ProductCollection::class),
                 ])->icon('shopping-cart')->collapsable(),
 
                 MenuSection::resource(User::class),

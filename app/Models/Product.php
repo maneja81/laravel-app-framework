@@ -2,13 +2,16 @@
 
 namespace App\Models;
 
+use Spatie\Sluggable\HasSlug;
 use App\Models\ProductCategory;
+use Spatie\Sluggable\SlugOptions;
 use App\Support\Traits\ModelHelpers;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
+    use HasSlug;
     use HasFactory;
     use ModelHelpers;
 
@@ -25,9 +28,22 @@ class Product extends Model
         'meta' => 'array',
     ];
 
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('name')
+            ->saveSlugsTo('slug');
+    }
+
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    public function create($data)
+    {
+        $product = parent::create($data);
+        return $product;
     }
 
     public function scopePublished($query)
@@ -79,9 +95,14 @@ class Product extends Model
         return $this->hasMany(ProductVariant::class);
     }
 
-    public function category()
+    public function categories()
     {
-        return $this->belongsTo(ProductCategory::class);
+        return $this->belongsToMany(ProductCategory::class);
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(ProductTag::class);
     }
 
     public function brand()

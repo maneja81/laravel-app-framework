@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('excerpt')->nullable();
             $table->longText('content')->nullable();
             $table->string('status')->index();
+            $table->unsignedBigInteger('brand_id')->default(1)->index();
             $table->json('meta')->nullable();
             $table->timestamps();
             $table->softDeletes();

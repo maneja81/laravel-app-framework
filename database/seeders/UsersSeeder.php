@@ -21,8 +21,9 @@ class UsersSeeder extends Seeder
                     'last_name' => $user['last_name'],
                     'email' => $user['email'],
                     'email_verified_at' => Carbon::now(),
-                    'password' => bcrypt($user['password']),
+                    'password' => $user['password'],
                 ]);
+                $new_user->markEmailAsVerified();
                 $new_user->assignRole($user['role']);
             }
         }

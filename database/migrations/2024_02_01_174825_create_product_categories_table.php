@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->integer('sort_order')->default(0);
             $table->string('status')->default('draft');
+            $table->unsignedBigInteger('parent')->nullable();
             $table->json('meta')->nullable();
             $table->timestamps();
         });

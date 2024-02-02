@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\Address;
 use App\Support\Traits\ModelHelpers;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ProductVendor extends Model
 {
@@ -26,5 +27,10 @@ class ProductVendor extends Model
     public function products()
     {
         return $this->hasMany(Product::class);
+    }
+
+    public function addresses()
+    {
+        return $this->morphMany(Address::class, 'addressable');
     }
 }
