@@ -49,18 +49,18 @@ class ProductCategory extends Resource
     public function fields(NovaRequest $request)
     {
         return [
-            ID::make()->sortable(),
-            Image::make('Image')->disk('public')->path('categories'),
-            Text::make('Name')->placeholder('Specify category name')->rules('required')->sortable(),
-            Slug::make('Slug')->from('Name')->rules('required'),
-            Markdown::make('Description')->hideFromIndex(),
+            ID::make()->sortable()->fullWidth(),
+            Image::make('Image')->disk('public')->path('categories')->fullWidth(),
+            Text::make('Name')->placeholder('Specify category name')->rules('required')->sortable()->fullWidth(),
+            Slug::make('Slug')->from('Name')->rules('required')->fullWidth(),
+            Markdown::make('Description')->hideFromIndex()->fullWidth(),
             Select::make('Status')->options([
                 'draft' => 'Draft',
                 'published' => 'Published',
             ])->rules('required')->displayUsing(function ($status) {
                 return ucfirst($status);
-            })->default('draft'),
-            KeyValue::make('Attributes', 'meta'),
+            })->default('draft')->fullWidth(),
+            KeyValue::make('Attributes', 'meta')->fullWidth(),
         ];
     }
 

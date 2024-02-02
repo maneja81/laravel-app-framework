@@ -43,6 +43,11 @@ class ProductVariant extends Model
 
     public function scopeSearch($query, $search)
     {
-        return $query->where('name', 'like', '%'.$search.'%');
+        return $query->where('name', 'like', '%' . $search . '%');
+    }
+
+    public function hsn_code()
+    {
+        return $this->belongsTo(ProductHsnCode::class);
     }
 }

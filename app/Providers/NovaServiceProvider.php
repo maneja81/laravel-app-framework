@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Nova\Dashboards\Main;
 use App\Nova\ProductCategory;
 use App\Nova\ProductCollection;
+use App\Nova\ProductHsnCode;
 use App\Nova\ProductTag;
 use App\Nova\ProductVariant;
 use App\Nova\ProductVendor;
@@ -44,6 +45,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                     MenuItem::resource(ProductTag::class),
                     MenuItem::resource(ProductVendor::class),
                     MenuItem::resource(ProductCollection::class),
+                    MenuItem::resource(ProductHsnCode::class),
                 ])->icon('shopping-cart')->collapsable(),
 
                 MenuSection::resource(User::class),

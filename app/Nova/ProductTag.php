@@ -48,18 +48,18 @@ class ProductTag extends Resource
     public function fields(NovaRequest $request)
     {
         return [
-            ID::make()->sortable(),
-            Image::make('Image')->disk('public')->path('product-tags'),
-            Text::make('Name')->rules('required','unique:product_tags,name,' . $this->id)->sortable(),
-            Slug::make('Slug')->from('Name')->rules('required')->sortable(),
-            Markdown::make('Description')->hideFromIndex(),
+            ID::make()->sortable()->fullWidth(),
+            Image::make('Image')->disk('public')->path('product-tags')->fullWidth(),
+            Text::make('Name')->rules('required','unique:product_tags,name,' . $this->id)->sortable()->fullWidth(),
+            Slug::make('Slug')->from('Name')->rules('required')->sortable()->fullWidth(),
+            Markdown::make('Description')->hideFromIndex()->fullWidth(),
             Select::make('Status')->options([
                 'draft' => 'Draft',
                 'published' => 'Published',
             ])->rules('required')->displayUsing(function ($status) {
                 return ucfirst($status);
-            })->default('draft'),
-            KeyValue::make('Attributes', 'meta')->nullable(),
+            })->default('draft')->fullWidth(),
+            KeyValue::make('Attributes', 'meta')->nullable()->fullWidth(),
         ];
     }
 

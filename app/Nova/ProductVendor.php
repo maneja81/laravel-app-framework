@@ -52,16 +52,16 @@ class ProductVendor extends Resource
     public function fields(NovaRequest $request)
     {
         return [
-            ID::make()->sortable(),
-            Text::make('Name')->placeholder('Specify vendor name')->rules('required', 'unique:product_vendors,address,' . $this->id)->sortable(),
-            Email::make('Email')->placeholder('Specify vendor email address')->rules('email', 'required', 'unique:product_vendors,email,' . $this->id),
+            ID::make()->sortable()->fullWidth(),
+            Text::make('Name')->placeholder('Specify vendor name')->rules('required', 'unique:product_vendors,address,' . $this->id)->sortable()->fullWidth(),
+            Email::make('Email')->placeholder('Specify vendor email address')->rules('email', 'required', 'unique:product_vendors,email,' . $this->id)->fullWidth(),
             Number::make('Phone')->rules('required', 'numeric', 'unique:product_vendors,phone,' . $this->id, function ($attribute, $value, $fail) {
                 if (Str::length($value) < 10) {
                     return $fail('The ' . $attribute . ' field must be 10 digits long.');
                 }
-            }),
-            URL::make('Website')->placeholder('Specify vendor website')->rules('url', 'required', 'unique:product_vendors,website,' . $this->id),
-            MorphMany::make('Addresses'),
+            })->fullWidth(),
+            URL::make('Website')->placeholder('Specify vendor website')->rules('url', 'required', 'unique:product_vendors,website,' . $this->id)->fullWidth(),
+            MorphMany::make('Addresses')->fullWidth(),
         ];
     }
 

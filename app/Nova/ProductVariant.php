@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Nova\Product;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
@@ -11,6 +12,7 @@ use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Currency;
 use Laravel\Nova\Fields\KeyValue;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class ProductVariant extends Resource
@@ -58,23 +60,25 @@ class ProductVariant extends Resource
         helpers()->log($this);
         return [
             ID::make()->sortable(),
-            Text::make('SKU')->rules('required', 'unique:product_variants,sku,' . $this->id)->default($sku)->readonly()->sortable(),
-            Text::make('Name')->rules('required', 'unique:product_variants,sku,' . $this->id)->help('e.g. BLACK-XL')->sortable(),
-            Image::make('Image')->disk('public')->rules('required')->path('products'),
-            Number::make('Stock')->rules('required', 'min:0')->sortable(),
-            Currency::make('Cost')->rules('required', 'min:0')->currency('INR')->sortable(),
-            Currency::make('Price')->rules('required', 'min:0')->currency('INR')->sortable(),
-            Currency::make('Compare Price')->rules('required', 'min:0')->currency('INR')->sortable(),
-            Number::make('Weight')->rules('required', 'min:0')->placeholder('KGs')->help('Specify the weight in kilogram, this is used to calculate shipping cost.')->step(0.01)->sortable(),
+            Text::make('SKU')->rules('required', 'unique:product_variants,sku,' . $this->id)->default($sku)->readonly()->sortable()->fullWidth(),
+            BelongsTo::make('Product', 'product', Product::class)->rules('required')->showCreateRelationButton()->searchable()->sortable()->fullWidth(),
+            Text::make('Name')->rules('required', 'unique:product_variants,sku,' . $this->id)->help('e.g. BLACK-XL')->sortable()->fullWidth(),
+            Image::make('Image')->disk('public')->rules('required')->path('products')->fullWidth(),
+            Number::make('Stock')->rules('required', 'min:0')->sortable()->fullWidth(),
+            Currency::make('Cost')->rules('required', 'min:0')->currency('INR')->sortable()->fullWidth(),
+            Currency::make('Price')->rules('required', 'min:0')->currency('INR')->sortable()->fullWidth(),
+            Currency::make('Compare Price')->rules('required', 'min:0')->currency('INR')->sortable()->fullWidth(),
+            Number::make('Weight')->rules('required', 'min:0')->placeholder('KGs')->help('Specify the weight in kilogram, this is used to calculate shipping cost.')->step(0.01)->sortable()->fullWidth(),
+            BelongsTo::make('HSN Code', 'hsn_code', ProductHsnCode::class)->rules('required', 'exists:product_hsn_codes,code')->showCreateRelationButton()->searchable()->sortable()->fullWidth(),
             Select::make('Status')->options([
                 'draft' => 'Draft',
                 'published' => 'Published',
                 'discontinued' => 'Discontinued',
-            ])->displayUsing(function ($status) {
+            ])->searchable()->displayUsing(function ($status) {
                 return ucfirst($status);
-            })->default('draft'),
-            Boolean::make('Is Default', 'is_default')->sortable(),
-            KeyValue::make('Meta')->rules('json'),
+            })->default('draft')->fullWidth(),
+            Boolean::make('Is Default', 'is_default')->sortable()->fullWidth(),
+            KeyValue::make('Meta')->rules('json')->fullWidth(),
         ];
     }
 

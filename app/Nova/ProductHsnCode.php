@@ -4,32 +4,25 @@ namespace App\Nova;
 
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Slug;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Badge;
-use Laravel\Nova\Fields\Image;
-use Laravel\Nova\Fields\Select;
-use Laravel\Nova\Fields\HasMany;
-use Laravel\Nova\Fields\KeyValue;
-use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\BelongsToMany;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class ProductCollection extends Resource
+class ProductHsnCode extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\ProductCollection>
+     * @var class-string<\App\Models\ProductHsnCode>
      */
-    public static $model = \App\Models\ProductCollection::class;
+    public static $model = \App\Models\ProductHsnCode::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'name';
+    public static $title = 'code';
 
     /**
      * The columns that should be searched.
@@ -38,9 +31,8 @@ class ProductCollection extends Resource
      */
     public static $search = [
         'id',
-        'name',
-        'slug',
-        'status',
+        'code',
+        'tax_percentage',
     ];
 
     /**
@@ -53,19 +45,8 @@ class ProductCollection extends Resource
     {
         return [
             ID::make()->sortable()->fullWidth(),
-            Text::make('Name')->placeholder('Specify collection name')->rules('required', 'unique:product_collections,name,'.$this->id)->sortable()->fullWidth(),
-            Slug::make('Slug')->from('Name')->separator('-')->rules('required')->fullWidth(),
-            Image::make('Image')->disableDownload()->fullWidth(),
-            Select::make('Status')->options([
-                'draft' => 'Draft',
-                'publish' => 'Publish',
-            ])->default('draft')->displayUsingLabels()->fullWidth(),
-            Badge::make('Status')->map([
-                'draft' => 'danger',
-                'publish' => 'success',
-            ])->fullWidth(),
-            KeyValue::make('Attributes', 'meta')->rules('json')->fullWidth(),
-            BelongsToMany::make('Products')->fullWidth(),
+            Text::make('Code')->rules('required')->sortable()->fullWidth(),
+            Number::make('Tax Percentage')->min(0)->rules('required')->sortable()->fullWidth(),
         ];
     }
 
