@@ -26,7 +26,6 @@ class SocialAuthController extends Controller
                 'token_secret' => $provider_user->tokenSecret,
             ]);
             auth()->login($user);
-
             return redirect()->route('web.index');
         }
         // create user
@@ -45,7 +44,7 @@ class SocialAuthController extends Controller
             'temporary-password' => true,
         ]);
         $user->markEmailAsVerified();
-        $user->syncRoles(['user'])->sendWelcomeEmailSocial();
+        $user->syncRoles(['customer'])->sendWelcomeEmailSocial();
         auth()->login($user);
 
         return redirect()->route('web.index');

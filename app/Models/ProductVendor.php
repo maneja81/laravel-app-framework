@@ -2,10 +2,9 @@
 
 namespace App\Models;
 
-use App\Models\Address;
 use App\Support\Traits\ModelHelpers;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class ProductVendor extends Model
 {

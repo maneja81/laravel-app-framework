@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use App\Support\Traits\ModelHelpers;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class ProductVariant extends Model
 {
@@ -43,7 +43,7 @@ class ProductVariant extends Model
 
     public function scopeSearch($query, $search)
     {
-        return $query->where('name', 'like', '%' . $search . '%');
+        return $query->where('name', 'like', '%'.$search.'%');
     }
 
     public function hsn_code()

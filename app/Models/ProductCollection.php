@@ -2,16 +2,16 @@
 
 namespace App\Models;
 
+use App\Support\Traits\ModelHelpers;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
-use App\Support\Traits\ModelHelpers;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ProductCollection extends Model
 {
-    use HasSlug;
     use HasFactory;
+    use HasSlug;
     use ModelHelpers;
 
     protected $fillable = [

@@ -23,9 +23,11 @@ class ProductBrand extends Model
         'meta' => 'array',
     ];
 
-    public function create($data){
+    public function create($data)
+    {
         $data['slug'] = helpers()->strToSlug($data['name']);
         $brand = parent::create($data);
+
         return $brand;
     }
 

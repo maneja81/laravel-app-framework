@@ -2,17 +2,16 @@
 
 namespace App\Nova;
 
-use App\Nova\Product;
-use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Image;
-use Laravel\Nova\Fields\Number;
-use Laravel\Nova\Fields\Select;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Currency;
+use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\KeyValue;
-use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Select;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class ProductVariant extends Resource
@@ -25,7 +24,6 @@ class ProductVariant extends Resource
     public static $model = \App\Models\ProductVariant::class;
 
     public static $with = ['product'];
-
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -51,18 +49,18 @@ class ProductVariant extends Resource
     /**
      * Get the fields displayed by the resource.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
     public function fields(NovaRequest $request)
     {
-        $sku = 'BFSKU-' . strtoupper(substr(uniqid(), 0, 8));
+        $sku = 'BFSKU-'.strtoupper(substr(uniqid(), 0, 8));
         helpers()->log($this);
+
         return [
             ID::make()->sortable(),
-            Text::make('SKU')->rules('required', 'unique:product_variants,sku,' . $this->id)->default($sku)->readonly()->sortable()->fullWidth(),
+            Text::make('SKU')->rules('required', 'unique:product_variants,sku,{{resourceId}}')->default($sku)->readonly()->sortable()->fullWidth(),
             BelongsTo::make('Product', 'product', Product::class)->rules('required')->showCreateRelationButton()->searchable()->sortable()->fullWidth(),
-            Text::make('Name')->rules('required', 'unique:product_variants,sku,' . $this->id)->help('e.g. BLACK-XL')->sortable()->fullWidth(),
+            Text::make('Name')->rules('required', 'unique:product_variants,sku,{{resourceId}}')->help('e.g. BLACK-XL')->sortable()->fullWidth(),
             Image::make('Image')->disk('public')->rules('required')->path('products')->fullWidth(),
             Number::make('Stock')->rules('required', 'min:0')->sortable()->fullWidth(),
             Currency::make('Cost')->rules('required', 'min:0')->currency('INR')->sortable()->fullWidth(),
@@ -85,7 +83,6 @@ class ProductVariant extends Resource
     /**
      * Get the cards available for the request.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
     public function cards(NovaRequest $request)
@@ -96,7 +93,6 @@ class ProductVariant extends Resource
     /**
      * Get the filters available for the resource.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
     public function filters(NovaRequest $request)
@@ -107,7 +103,6 @@ class ProductVariant extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
     public function lenses(NovaRequest $request)
@@ -118,7 +113,6 @@ class ProductVariant extends Resource
     /**
      * Get the actions available for the resource.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
     public function actions(NovaRequest $request)

@@ -4,15 +4,16 @@ namespace App\Providers;
 
 use App\Nova\User;
 use App\Nova\Product;
+use App\Nova\Customer;
 use Laravel\Nova\Nova;
+use App\Nova\ProductTag;
+use App\Nova\ProductVendor;
+use App\Nova\ProductHsnCode;
+use App\Nova\ProductVariant;
 use Illuminate\Http\Request;
 use App\Nova\Dashboards\Main;
 use App\Nova\ProductCategory;
 use App\Nova\ProductCollection;
-use App\Nova\ProductHsnCode;
-use App\Nova\ProductTag;
-use App\Nova\ProductVariant;
-use App\Nova\ProductVendor;
 use Laravel\Nova\Menu\MenuItem;
 use Laravel\Nova\Menu\MenuGroup;
 use Laravel\Nova\Menu\MenuSection;
@@ -52,10 +53,10 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 ])->icon('shopping-cart')->collapsable(),
 
                 MenuSection::make('People', [
-                    MenuItem::resource(User::class),
+                    MenuItem::resource(Customer::class),
                     MenuItem::resource(ProductVendor::class)->name('Vendors'),
+                    MenuItem::resource(User::class),
                 ])->icon('user-group'),
-
 
             ];
         });

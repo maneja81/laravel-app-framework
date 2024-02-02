@@ -15,7 +15,7 @@ class ProductBrandSeeder extends Seeder
         $brands = config('setup.brands');
         foreach ($brands as $item) {
             $brand = (new ProductBrand())->getByField('name', $item['name']);
-            if (!$brand) {
+            if (! $brand) {
                 (new ProductBrand)->create($item);
             }
         }

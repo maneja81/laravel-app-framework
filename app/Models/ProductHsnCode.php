@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\ProductVariant;
 use App\Support\Traits\ModelHelpers;
 use Illuminate\Database\Eloquent\Model;
 

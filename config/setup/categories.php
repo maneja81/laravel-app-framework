@@ -2,237 +2,237 @@
 
 return [
     [
-        'name' => "Accessories",
+        'name' => 'Accessories',
     ],
     [
-        'name' => "Air Filter",
+        'name' => 'Air Filter',
     ],
     [
-        'name' => "Amplifier",
+        'name' => 'Amplifier',
     ],
     [
-        'name' => "Amplifiers",
+        'name' => 'Amplifiers',
     ],
     [
-        'name' => "Audio Systems",
+        'name' => 'Audio Systems',
     ],
     [
-        'name' => "Backpacks",
+        'name' => 'Backpacks',
     ],
     [
-        'name' => "Backrest & Racks",
+        'name' => 'Backrest & Racks',
     ],
     [
-        'name' => "Base Layers",
+        'name' => 'Base Layers',
     ],
     [
-        'name' => "Bolt-on Parts",
+        'name' => 'Bolt-on Parts',
     ],
     [
-        'name' => "Brakepads",
+        'name' => 'Brakepads',
     ],
     [
         'name' => "BYKE'IT! Jeans",
     ],
     [
-        'name' => "Cardo",
+        'name' => 'Cardo',
     ],
     [
-        'name' => "Cobra",
+        'name' => 'Cobra',
     ],
     [
-        'name' => "Communications & Cams",
+        'name' => 'Communications & Cams',
     ],
     [
-        'name' => "Controls",
+        'name' => 'Controls',
     ],
     [
-        'name' => "Crashbars",
+        'name' => 'Crashbars',
     ],
     [
-        'name' => "Engine Oils",
+        'name' => 'Engine Oils',
     ],
     [
-        'name' => "Evotech",
+        'name' => 'Evotech',
     ],
     [
-        'name' => "Exhausts",
+        'name' => 'Exhausts',
     ],
     [
-        'name' => "Flags",
+        'name' => 'Flags',
     ],
     [
-        'name' => "Flip Up / Modular",
+        'name' => 'Flip Up / Modular',
     ],
     [
-        'name' => "Forcefield",
+        'name' => 'Forcefield',
     ],
     [
-        'name' => "Full Face",
+        'name' => 'Full Face',
     ],
     [
-        'name' => "Hand Controls & Levers",
+        'name' => 'Hand Controls & Levers',
     ],
     [
-        'name' => "HandGuard",
+        'name' => 'HandGuard',
     ],
     [
-        'name' => "Headlight Guard",
+        'name' => 'Headlight Guard',
     ],
     [
-        'name' => "Helmet Accessories",
+        'name' => 'Helmet Accessories',
     ],
     [
-        'name' => "Helmets",
+        'name' => 'Helmets',
     ],
     [
-        'name' => "Highway Pegs & Footpegs",
+        'name' => 'Highway Pegs & Footpegs',
     ],
     [
-        'name' => "Hydration",
+        'name' => 'Hydration',
     ],
     [
-        'name' => "Icon",
+        'name' => 'Icon',
     ],
     [
-        'name' => "Innovv",
+        'name' => 'Innovv',
     ],
     [
-        'name' => "Junior",
+        'name' => 'Junior',
     ],
     [
-        'name' => "Lifestyles / Casuals",
+        'name' => 'Lifestyles / Casuals',
     ],
     [
-        'name' => "Liners",
+        'name' => 'Liners',
     ],
     [
-        'name' => "Luggage / Backpacks",
+        'name' => 'Luggage / Backpacks',
     ],
     [
-        'name' => "Mirrors",
+        'name' => 'Mirrors',
     ],
     [
-        'name' => "Motorcycle Accessories",
+        'name' => 'Motorcycle Accessories',
     ],
     [
-        'name' => "Motorcycle Lighting",
+        'name' => 'Motorcycle Lighting',
     ],
     [
-        'name' => "Motorcycle Maintenance",
+        'name' => 'Motorcycle Maintenance',
     ],
     [
-        'name' => "Motorcycle Storage",
+        'name' => 'Motorcycle Storage',
     ],
     [
-        'name' => "Off Road",
+        'name' => 'Off Road',
     ],
     [
-        'name' => "Oil & Lubricants",
+        'name' => 'Oil & Lubricants',
     ],
     [
-        'name' => "Oil FIlter",
+        'name' => 'Oil FIlter',
     ],
     [
-        'name' => "Open Face",
+        'name' => 'Open Face',
     ],
     [
-        'name' => "Our Brands",
+        'name' => 'Our Brands',
     ],
     [
-        'name' => "Oxford",
+        'name' => 'Oxford',
     ],
     [
-        'name' => "Parts",
+        'name' => 'Parts',
     ],
     [
-        'name' => "Phone Mounts",
+        'name' => 'Phone Mounts',
     ],
     [
-        'name' => "Protection",
+        'name' => 'Protection',
     ],
     [
-        'name' => "Protector",
+        'name' => 'Protector',
     ],
     [
-        'name' => "Racing Suits",
+        'name' => 'Racing Suits',
     ],
     [
-        'name' => "Radiator Guard",
+        'name' => 'Radiator Guard',
     ],
     [
-        'name' => "Rain Gears",
+        'name' => 'Rain Gears',
     ],
     [
         'name' => "Rev'it!",
     ],
     [
-        'name' => "Rider Tech",
+        'name' => 'Rider Tech',
     ],
     [
-        'name' => "Riding Boots",
+        'name' => 'Riding Boots',
     ],
     [
-        'name' => "Riding Gears",
+        'name' => 'Riding Gears',
     ],
     [
-        'name' => "Riding Glasses",
+        'name' => 'Riding Glasses',
     ],
     [
-        'name' => "Riding Gloves",
+        'name' => 'Riding Gloves',
     ],
     [
-        'name' => "Riding Jackets",
+        'name' => 'Riding Jackets',
     ],
     [
-        'name' => "Riding Pants",
+        'name' => 'Riding Pants',
     ],
     [
-        'name' => "Risers",
+        'name' => 'Risers',
     ],
     [
-        'name' => "S&S Cycle",
+        'name' => 'S&S Cycle',
     ],
     [
-        'name' => "Saddlebags",
+        'name' => 'Saddlebags',
     ],
     [
-        'name' => "Sena",
+        'name' => 'Sena',
     ],
     [
-        'name' => "Side Cases",
+        'name' => 'Side Cases',
     ],
     [
-        'name' => "Sidestand Foot",
+        'name' => 'Sidestand Foot',
     ],
     [
-        'name' => "Sliders",
+        'name' => 'Sliders',
     ],
     [
-        'name' => "Stylmartin",
+        'name' => 'Stylmartin',
     ],
     [
-        'name' => "Sump Guard",
+        'name' => 'Sump Guard',
     ],
     [
-        'name' => "Surface Care",
+        'name' => 'Surface Care',
     ],
     [
-        'name' => "Tank Bag",
+        'name' => 'Tank Bag',
     ],
     [
-        'name' => "Tank Pads",
+        'name' => 'Tank Pads',
     ],
     [
-        'name' => "TCX",
+        'name' => 'TCX',
     ],
     [
-        'name' => "Tie-Downs",
+        'name' => 'Tie-Downs',
     ],
     [
-        'name' => "Top Cases",
+        'name' => 'Top Cases',
     ],
     [
-        'name' => "Vance & Hines",
+        'name' => 'Vance & Hines',
     ],
 ];

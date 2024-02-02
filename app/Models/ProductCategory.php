@@ -2,17 +2,17 @@
 
 namespace App\Models;
 
+use App\Support\Traits\ModelHelpers;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
-use App\Support\Traits\ModelHelpers;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ProductCategory extends Model
 {
     use HasFactory;
-    use ModelHelpers;
     use HasSlug;
+    use ModelHelpers;
 
     protected $fillable = [
         'name',
@@ -29,6 +29,7 @@ class ProductCategory extends Model
     public function create($data)
     {
         $category = parent::create($data);
+
         return $category;
     }
 
@@ -56,7 +57,7 @@ class ProductCategory extends Model
 
     public function scopeFilter($query, $filters)
     {
-        return $query->where('name', 'like', '%' . $filters['search'] . '%');
+        return $query->where('name', 'like', '%'.$filters['search'].'%');
     }
 
     public function scopePublished($query)

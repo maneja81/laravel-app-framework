@@ -2,17 +2,16 @@
 
 namespace App\Models;
 
-use Spatie\Sluggable\HasSlug;
-use App\Models\ProductCategory;
-use Spatie\Sluggable\SlugOptions;
 use App\Support\Traits\ModelHelpers;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 class Product extends Model
 {
-    use HasSlug;
     use HasFactory;
+    use HasSlug;
     use ModelHelpers;
 
     protected $fillable = [
@@ -43,6 +42,7 @@ class Product extends Model
     public function create($data)
     {
         $product = parent::create($data);
+
         return $product;
     }
 
@@ -63,8 +63,8 @@ class Product extends Model
 
     public function scopeSearch($query, $search)
     {
-        return $query->where('name', 'like', '%' . $search . '%')
-            ->orWhere('content', 'like', '%' . $search . '%');
+        return $query->where('name', 'like', '%'.$search.'%')
+            ->orWhere('content', 'like', '%'.$search.'%');
     }
 
     public function scopeSort($query, $sort)
@@ -119,5 +119,4 @@ class Product extends Model
     {
         return $this->belongsToMany(ProductVendor::class);
     }
-
 }

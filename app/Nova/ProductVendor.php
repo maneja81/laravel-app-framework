@@ -2,16 +2,13 @@
 
 namespace App\Nova;
 
-use App\Nova\Address;
 use Illuminate\Support\Str;
-use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\URL;
-use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Email;
-use Laravel\Nova\Fields\Number;
-use Laravel\Nova\Fields\MorphTo;
+use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\MorphMany;
-use Laravel\Nova\Fields\MorphToMany;
+use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\URL;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class ProductVendor extends Resource
@@ -46,21 +43,20 @@ class ProductVendor extends Resource
     /**
      * Get the fields displayed by the resource.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
     public function fields(NovaRequest $request)
     {
         return [
             ID::make()->sortable()->fullWidth(),
-            Text::make('Name')->placeholder('Specify vendor name')->rules('required', 'unique:product_vendors,address,' . $this->id)->sortable()->fullWidth(),
-            Email::make('Email')->placeholder('Specify vendor email address')->rules('email', 'required', 'unique:product_vendors,email,' . $this->id)->fullWidth(),
-            Number::make('Phone')->rules('required', 'numeric', 'unique:product_vendors,phone,' . $this->id, function ($attribute, $value, $fail) {
+            Text::make('Name')->placeholder('Specify vendor name')->rules('required', 'unique:product_vendors,address,{{resourceId}}')->sortable()->fullWidth(),
+            Email::make('Email')->placeholder('Specify vendor email address')->rules('email', 'required', 'unique:product_vendors,email,{{resourceId}}')->fullWidth(),
+            Number::make('Phone')->rules('required', 'numeric', 'unique:product_vendors,phone,{{resourceId}}', function ($attribute, $value, $fail) {
                 if (Str::length($value) < 10) {
-                    return $fail('The ' . $attribute . ' field must be 10 digits long.');
+                    return $fail('The '.$attribute.' field must be 10 digits long.');
                 }
             })->fullWidth(),
-            URL::make('Website')->placeholder('Specify vendor website')->rules('url', 'required', 'unique:product_vendors,website,' . $this->id)->fullWidth(),
+            URL::make('Website')->placeholder('Specify vendor website')->rules('url', 'unique:product_vendors,website,{{resourceId}}')->fullWidth(),
             MorphMany::make('Addresses')->fullWidth(),
         ];
     }
@@ -68,7 +64,6 @@ class ProductVendor extends Resource
     /**
      * Get the cards available for the request.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
     public function cards(NovaRequest $request)
@@ -79,7 +74,6 @@ class ProductVendor extends Resource
     /**
      * Get the filters available for the resource.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
     public function filters(NovaRequest $request)
@@ -90,7 +84,6 @@ class ProductVendor extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
     public function lenses(NovaRequest $request)
@@ -101,7 +94,6 @@ class ProductVendor extends Resource
     /**
      * Get the actions available for the resource.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @return array
      */
     public function actions(NovaRequest $request)
