@@ -39,9 +39,11 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 MenuSection::dashboard(Main::class)->icon('chart-bar'),
 
                 MenuSection::make('Store', [
-                    MenuItem::resource(Product::class)->name('Products'),
-                    MenuItem::resource(ProductVariant::class)->name('Variants'),
-                    MenuGroup::make('Settings', [
+                    MenuGroup::make('Inventory', [
+                        MenuItem::resource(Product::class)->name('Products'),
+                        MenuItem::resource(ProductVariant::class)->name('Variants'),
+                    ]),
+                    MenuGroup::make('Attributes', [
                         MenuItem::resource(ProductHsnCode::class)->name('HSN Codes'),
                         MenuItem::resource(ProductCollection::class)->name('Collections'),
                         MenuItem::resource(ProductCategory::class)->name('Categories'),
