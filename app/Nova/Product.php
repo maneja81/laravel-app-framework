@@ -2,16 +2,18 @@
 
 namespace App\Nova;
 
-use Illuminate\Http\Request;
-use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\BelongsToMany;
-use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Markdown;
-use Laravel\Nova\Fields\Select;
+use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Tag;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Select;
+use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\Markdown;
+use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Ebess\AdvancedNovaMediaLibrary\Fields\Files;
+use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 
 class Product extends Resource
 {
@@ -73,6 +75,8 @@ class Product extends Resource
             Tag::make('Categories', 'categories', ProductCategory::class)->showCreateRelationButton()->fullWidth(),
             Tag::make('Tags', 'tags', ProductTag::class)->showCreateRelationButton()->fullWidth(),
             Tag::make('Fitments', 'motorcycles', Motorcycle::class)->fullWidth(),
+            Files::make('Featured Image', 'featured')->fullWidth(),
+            Files::make('Gallery', 'gallery')->fullWidth(),
         ];
     }
 

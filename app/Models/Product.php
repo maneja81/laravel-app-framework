@@ -2,17 +2,21 @@
 
 namespace App\Models;
 
-use App\Support\Traits\ModelHelpers;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Spatie\Sluggable\HasSlug;
+use Spatie\MediaLibrary\HasMedia;
 use Spatie\Sluggable\SlugOptions;
+use App\Support\Traits\ModelHelpers;
+use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Product extends Model
+class Product extends Model implements HasMedia
 {
     use HasFactory;
     use HasSlug;
     use ModelHelpers;
+    use InteractsWithMedia;
 
     protected $fillable = [
         'name',
@@ -39,6 +43,29 @@ class Product extends Model
         return 'slug';
     }
 
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this->addMediaConversion('thumb')
+            ->width(256)
+            ->height(256);
+    }
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('featured')->singleFile();
+        $this->addMediaCollection('gallery');
+    }
+
+    public function getFeaturedImageAttribute()
+    {
+        return $this->getMedia('featured')->first();
+    }
+
+    public function getGalleryAttribute()
+    {
+        return $this->getMedia('gallery');
+    }
+
     public function create($data)
     {
         $product = parent::create($data);
@@ -63,8 +90,8 @@ class Product extends Model
 
     public function scopeSearch($query, $search)
     {
-        return $query->where('name', 'like', '%'.$search.'%')
-            ->orWhere('content', 'like', '%'.$search.'%');
+        return $query->where('name', 'like', '%' . $search . '%')
+            ->orWhere('content', 'like', '%' . $search . '%');
     }
 
     public function scopeSort($query, $sort)
@@ -124,5 +151,4 @@ class Product extends Model
     {
         return $this->belongsToMany(Motorcycle::class);
     }
-
 }
