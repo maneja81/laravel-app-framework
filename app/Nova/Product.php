@@ -67,9 +67,12 @@ class Product extends Resource
             BelongsToMany::make('Collections', 'collections', ProductCollection::class)->showCreateRelationButton()->collapsedByDefault()->fullWidth(),
             BelongsToMany::make('Categories', 'categories', ProductCategory::class)->showCreateRelationButton()->collapsedByDefault()->fullWidth(),
             BelongsToMany::make('Tags', 'tags', ProductTag::class)->showCreateRelationButton()->collapsedByDefault()->fullWidth(),
+            BelongsToMany::make('Fitments', 'motorcycles', Motorcycle::class)->collapsedByDefault()->fullWidth(),
             BelongsToMany::make('Vendors', 'vendors', ProductVendor::class)->showCreateRelationButton()->collapsedByDefault()->fullWidth(),
+            Tag::make('Collections', 'collections', ProductCollection::class)->showCreateRelationButton()->fullWidth(),
             Tag::make('Categories', 'categories', ProductCategory::class)->showCreateRelationButton()->fullWidth(),
             Tag::make('Tags', 'tags', ProductTag::class)->showCreateRelationButton()->fullWidth(),
+            Tag::make('Fitments', 'motorcycles', Motorcycle::class)->fullWidth(),
         ];
     }
 

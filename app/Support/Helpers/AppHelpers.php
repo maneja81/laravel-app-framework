@@ -2,11 +2,13 @@
 
 namespace App\Support\Helpers;
 
+use App\Support\Helpers\Traits\ApiHelpers;
 use App\Support\Helpers\Traits\ArrayHelpers;
 use App\Support\Helpers\Traits\DateHelpers;
 use App\Support\Helpers\Traits\EmailHelpers;
 use App\Support\Helpers\Traits\FileHelpers;
 use App\Support\Helpers\Traits\FormHelpers;
+use App\Support\Helpers\Traits\SeedHelpers;
 use App\Support\Helpers\Traits\StringHelpers;
 use App\Support\Helpers\Traits\UiHelpers;
 use Illuminate\Filesystem\Filesystem;
@@ -21,6 +23,8 @@ class AppHelpers
     use FormHelpers;
     use StringHelpers;
     use UiHelpers;
+    use ApiHelpers;
+    use SeedHelpers;
 
     protected Filesystem $filesystem;
 

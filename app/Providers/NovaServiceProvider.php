@@ -6,6 +6,7 @@ use App\Nova\User;
 use App\Nova\Product;
 use App\Nova\Customer;
 use Laravel\Nova\Nova;
+use App\Nova\Motorcycle;
 use App\Nova\ProductTag;
 use App\Nova\ProductVendor;
 use App\Nova\ProductHsnCode;
@@ -57,6 +58,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                     MenuItem::resource(ProductVendor::class)->name('Vendors'),
                     MenuItem::resource(User::class),
                 ])->icon('user-group'),
+
+                MenuSection::resource(Motorcycle::class),
 
             ];
         });

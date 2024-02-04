@@ -119,4 +119,10 @@ class Product extends Model
     {
         return $this->belongsToMany(ProductVendor::class);
     }
+
+    public function motorcycles()
+    {
+        return $this->belongsToMany(Motorcycle::class);
+    }
+
 }

@@ -53,7 +53,7 @@ class ProductVariant extends Resource
      */
     public function fields(NovaRequest $request)
     {
-        $sku = 'BFSKU-'.strtoupper(substr(uniqid(), 0, 8));
+        $sku = 'BFSKU-' . strtoupper(substr(uniqid(), 0, 8));
         helpers()->log($this);
 
         return [
@@ -76,7 +76,7 @@ class ProductVariant extends Resource
                 return ucfirst($status);
             })->default('draft')->fullWidth(),
             Boolean::make('Is Default', 'is_default')->sortable()->fullWidth(),
-            KeyValue::make('Meta')->rules('json')->fullWidth(),
+            KeyValue::make('Attributes', 'meta')->rules('json')->fullWidth(),
         ];
     }
 
