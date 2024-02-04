@@ -46,13 +46,9 @@ class Motorcycle extends Resource
     {
         return [
             // ID::make()->sortable(),
-            Text::make('Name')->displayUsing(function(){
-                return $this->display_name;
-            })->sortable()->onlyOnIndex(),
-
-            Text::make('Make')->sortable()->hideFromIndex(),
-            Text::make('Model')->sortable()->hideFromIndex(),
-            Text::make('Year')->sortable()->hideFromIndex(),
+            Text::make('Make')->rules('required')->sortable(),
+            Text::make('Model')->rules('required')->sortable(),
+            Text::make('Year')->rules('required')->sortable(),
             KeyValue::make('Attributes', 'meta')->nullable(),
         ];
     }

@@ -4,18 +4,20 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-use App\Notifications\ForgotPassword;
-use App\Notifications\MagicLoginLink;
-use App\Notifications\VerifyEmailAddress;
-use App\Notifications\WelcomeEmail;
-use App\Notifications\WelcomeEmailSocial;
-use App\Support\Traits\ModelHelpers;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use App\Models\Address;
+use App\Models\Motorcycle;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Models\Role;
+use App\Notifications\WelcomeEmail;
+use App\Support\Traits\ModelHelpers;
+use App\Notifications\ForgotPassword;
+use App\Notifications\MagicLoginLink;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Notifications\Notifiable;
+use App\Notifications\VerifyEmailAddress;
+use App\Notifications\WelcomeEmailSocial;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
@@ -114,6 +116,16 @@ class User extends Authenticatable
 
     public function getDisplayNameAttribute()
     {
-        return $this->first_name.' '.$this->last_name;
+        return $this->first_name . ' ' . $this->last_name;
+    }
+
+    public function motorcycles()
+    {
+        return $this->belongsToMany(Motorcycle::class);
+    }
+
+    public function addresses()
+    {
+        return $this->morphMany(Address::class, 'addressable');
     }
 }

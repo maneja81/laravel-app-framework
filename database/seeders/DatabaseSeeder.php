@@ -14,9 +14,10 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(RolesSeeder::class);
         $this->call(UsersSeeder::class);
+        $this->call(MotorcycleSeeder::class);
+        // fake data
         $this->call(ProductBrandSeeder::class);
         $this->call(ProductCategorySeeder::class);
-        // fake data
         $this->call(ProductSeeder::class);
     }
 }
